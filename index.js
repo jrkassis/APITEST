@@ -3,7 +3,6 @@ const app = express();
 var cors = require('cors')
 const PORT = process.env.PORT || 3030;
 
-app.use(cors())
 const xlsx = require('xlsx');
 var fs = require('fs');
 
@@ -35,6 +34,7 @@ function convertExcelFileToJsonUsingXlsx() {
     return parsedData;
 }
 
+app.use(cors())
 app.get('/',(req,res)=>{
     res.send(convertExcelFileToJsonUsingXlsx());
 })
